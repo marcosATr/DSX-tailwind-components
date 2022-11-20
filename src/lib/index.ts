@@ -1,1 +1,1 @@
-// export { default as AwesomeHeader } from './components/AwesomeHeader.vue'
+export { default as Typography } from './Typography'
