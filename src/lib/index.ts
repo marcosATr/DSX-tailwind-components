@@ -1,0 +1,1 @@
+// export { default as AwesomeHeader } from './components/AwesomeHeader.vue'
