@@ -1,4 +1,5 @@
 interface AlertProps {
+  title?: string;
   text: string;
   variant?: "success" | "warning" | "danger" | "primary";
   icon?: React.ReactElement;
@@ -11,10 +12,22 @@ const background = {
   primary: "bg-primary-light text-primary",
 };
 
-function Alert({ text, icon, variant = "primary" }: AlertProps) {
+function Alert({ title, text, icon, variant = "primary" }: AlertProps) {
   return (
-    <div className={`rounded w-full py-3 px-[14px] ${background[variant]}`}>
-      <span className="text-sm">{text}</span>
+    <div className={`flex rounded w-full py-3 px-[14px] ${background[variant]}`}>
+      {icon && (
+        <div
+          className={`flex items-center justify-center pl-2 pr-5 ${
+            title ? "text-2xl" : "text-lg"
+          }`}
+        >
+          {icon}
+        </div>
+      )}
+      <div>
+        {title && <span className="text-base font-semibold block">{title}</span>}
+        <span className="text-sm font-medium">{text}</span>
+      </div>
     </div>
   );
 }

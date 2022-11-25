@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Alert } from "../lib";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { FiCheckCircle } from "react-icons/fi";
 
 export default {
   title: "Alert",
@@ -13,11 +14,20 @@ export const Primary: ComponentStory<typeof Alert> = () => (
 );
 
 export const Success: ComponentStory<typeof Alert> = () => (
-  <Alert text="This is the success alert variant" variant="success" />
+  <Alert
+    title="This text is supposed to appear on the first line and be a bit bigger."
+    text="This is the success alert variant"
+    variant="success"
+    icon={<FiCheckCircle />}
+  />
 );
 
 export const Danger: ComponentStory<typeof Alert> = () => (
-  <Alert text="This is the danger alert variant" variant="danger" />
+  <Alert
+    text="This is the danger alert variant"
+    variant="danger"
+    icon={<FiCheckCircle />}
+  />
 );
 
 export const Warning: ComponentStory<typeof Alert> = () => (
