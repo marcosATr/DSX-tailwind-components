@@ -1,6 +1,6 @@
 import { IconWithBadge } from "../lib";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { FiAlertTriangle, FiCalendar, FiFolder, FiPhoneOutgoing, FiTwitter } from "react-icons/fi";
+import { FiCalendar, FiTwitter } from "react-icons/fi";
 
 export default {
   title: "IconWithBadge",
