@@ -18,7 +18,6 @@ export const Success: ComponentStory<typeof Alert> = () => (
     title="This text is supposed to appear on the first line and be a bit bigger."
     text="This is the success alert variant"
     variant="success"
-    icon={<FiCheckCircle />}
   />
 );
 
