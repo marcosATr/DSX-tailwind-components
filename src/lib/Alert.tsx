@@ -1,7 +1,9 @@
+import { _VARIANTTYPES } from "./vars";
+
 interface AlertProps {
   title?: string;
   text: string;
-  variant?: "success" | "warning" | "danger" | "primary";
+  variant?: _VARIANTTYPES;
   icon?: React.ReactElement;
 }
 
@@ -17,9 +19,8 @@ function Alert({ title, text, icon, variant = "primary" }: AlertProps) {
     <div className={`flex rounded w-full py-3 px-[14px] ${background[variant]}`}>
       {icon && (
         <div
-          className={`flex items-center justify-center pl-2 pr-5 ${
-            title ? "text-2xl" : "text-lg"
-          }`}
+          className={`flex items-center justify-center pl-2 pr-5 ${title ? "text-2xl" : "text-lg"
+            }`}
         >
           {icon}
         </div>

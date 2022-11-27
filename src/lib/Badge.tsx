@@ -1,8 +1,9 @@
 import React from "react";
+import { _VARIANTTYPES } from "./vars";
 
 interface BadgeProps {
   text: string | React.ReactElement;
-  variant?: "success" | "warning" | "danger" | "primary";
+  variant?: _VARIANTTYPES;
   version?: "solid" | "transparent";
 }
 
@@ -31,12 +32,11 @@ export default function Badge({
 
   return (
     <div
-      className={`flex w-fit rounded font-bold leading-3 ${
-        typeString ? "px-[10px] py-[5px] text-xs" : "p-[5px] text-sm"
-      } ${background({
-        variant,
-        version,
-      })}`}
+      className={`flex w-fit rounded font-bold leading-3 ${typeString ? "px-[10px] py-[5px] text-xs" : "p-[5px] text-sm"
+        } ${background({
+          variant,
+          version,
+        })}`}
     >
       {!typeString ? React.cloneElement(text, { className: "stroke-[3]" }) : text}
     </div>

@@ -1,8 +1,7 @@
 // Alert.stories.js|jsx
-import React, { useState } from "react";
 import { Badge } from "../lib";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { FiAlertTriangle, FiFolder } from "react-icons/fi";
+import { FiFolder } from "react-icons/fi";
 
 export default {
   title: "Badge",
