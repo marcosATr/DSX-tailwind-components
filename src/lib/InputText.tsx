@@ -4,9 +4,9 @@ interface InputTextProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value?: string;
 }
-function InputText({ placeholder = '', disabled }: InputTextProps) {
+function InputText({ placeholder = '', disabled, value, onChange }: InputTextProps) {
   return (
-    <input disabled={disabled} type="text" placeholder={placeholder} className="border border-lightBorder focus:border-primary focus:border focus-visible:border-0 min-w-[200px] w-full h-8 px-3 py-2 placeholder:text-lightText text-defaultText rounded font-normal text-sm leading-6 disabled:bg-gray" />
+    <input disabled={disabled} type="text" value={value} onChange={onChange} placeholder={placeholder} className="border border-lightBorder focus:border-primary focus:border focus-visible:border-0 min-w-[200px] w-full h-8 px-3 py-2 placeholder:text-lightText text-defaultText rounded font-normal text-sm leading-6 disabled:bg-gray" />
   );
 }
 

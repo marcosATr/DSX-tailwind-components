@@ -35,6 +35,22 @@ export const TextInputWithoutPlaceholder: ComponentStory<typeof InputRadio> = ()
   return <InputRadio id="121223123--123123123-123123123" label="first input" onChange={onChange} selected={value} />;
 };
 
+export const DisabledRadioInput: ComponentStory<typeof InputRadio> = () => {
+  const [value, setValue] = useState<string>();
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  };
+  return <InputRadio id="232--111-211" label="first input" onChange={onChange} selected={value} disabled />;
+};
+
+export const DisabledCheckedRadioInput: ComponentStory<typeof InputRadio> = () => {
+  const [value, setValue] = useState<string>("232--111-211");
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  };
+  return <InputRadio id="232--111-211" label="first input" onChange={onChange} selected={value} disabled />;
+};
+
 
 export const MultipleRadioInputs: ComponentStory<typeof InputRadio> = () => {
   const [value, setValue] = useState<string>();
