@@ -10,7 +10,7 @@ interface TagProps {
 function Tag({ text, variant= "primary", rounded}: TagProps) {
   return (
     <div className="flex w-fit items-center font-bold">
-      <div className={`h-[10px] w-[10px] mr-[6px] ${_BACKGROUND[variant]} ${rounded && "rounded-full"}`}></div>
+      <div className={`h-[10px] w-[10px] mr-[6px] ${_BACKGROUND.solid[variant]} ${rounded && "rounded-full"}`}></div>
       <span className="text-sm font-semibold text-dark">{text}</span>
     </div>
   );
