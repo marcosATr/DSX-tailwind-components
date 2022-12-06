@@ -23,7 +23,7 @@ module.exports = {
       //BORDERS
       lightBorder: "#DBDADE",
       //STATE
-      "primary-light": "rgba(115, 103, 240, 0.16)",
+      "primary-light": "#7367f029",
       "success-light": "rgba(40, 199, 111, 0.16)",
       "danger-light": "rgba(75, 75, 75, 0.16)",
       "warning-light": "rgba(255, 159, 67, 0.16)",
