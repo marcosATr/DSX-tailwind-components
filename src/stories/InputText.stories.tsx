@@ -13,6 +13,11 @@ export const TextInputWithoutPlaceholder: ComponentStory<typeof InputText> = () 
   <InputText />
 );
 
+export const TextInputWithLabel: ComponentStory<typeof InputText> = () => (
+  <InputText label="Full name"/>
+);
+
+
 
 export const TextInputWithPlaceholder: ComponentStory<typeof InputText> = () => {
   const [value, setValue] = useState('');
