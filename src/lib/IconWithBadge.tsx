@@ -1,8 +1,6 @@
-import React, {
-  ComponentClass,
-  FunctionComponent,
-} from "react";
-import { _BACKGROUND, _VARIANTTYPES } from "./vars";
+import classNames from "classnames";
+import React from "react";
+import { _VARIANTTYPES } from "./vars";
 interface IconProps {
   className: string;
 }
@@ -10,27 +8,23 @@ interface IconProps {
 interface IconWithBadgeProps {
   icon: React.ReactElement;
   number?: number;
-  iconClasses?: string;
   badgeBackgroundColor?: _VARIANTTYPES;
 }
 
 function IconWithBadge({
   icon,
   number,
-  iconClasses,
   badgeBackgroundColor = "primary",
 }: IconWithBadgeProps) {
+  const cn = classNames(
+    "absolute rounded-full top-[-10px] right-[-10px] flex h-4 w-4 items-center justify-center p-1 text-[9px] text-white",
+    badgeBackgroundColor && `bg-${badgeBackgroundColor}`
+  );
   return (
     <div className="relative flex w-fit">
-      {React.cloneElement(icon, {
-        ...(iconClasses && {
-          className: iconClasses,
-        }),
-      })}
-      <div className={`absolute rounded-full ${_BACKGROUND.solid[badgeBackgroundColor]} text-white text-[9px] p-1 flex w-4 h-4 items-center justify-center top-[-10px] right-[-10px]`}>
-        {number}
-      </div>
-    </div >
+      {icon}
+      <div className={cn}>{number}</div>
+    </div>
   );
 }
 

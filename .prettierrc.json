@@ -6,5 +6,6 @@
   "trailingComma": "es5",
   "editorconfig": false,
   "endOfLine": "crlf",
-  "singleAttributePerLine": true
+  "singleAttributePerLine": true,
+  "proseWrap": "always"
 }
