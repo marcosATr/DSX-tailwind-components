@@ -1,0 +1,10 @@
+{
+  "printWidth": 60,
+  "bracketSameLine": false,
+  "arrowParens": "always",
+  "semi": true,
+  "trailingComma": "es5",
+  "editorconfig": false,
+  "endOfLine": "crlf",
+  "singleAttributePerLine": true
+}
