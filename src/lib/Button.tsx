@@ -7,7 +7,6 @@ interface ButtonProps {
   version?: "solid" | "transparent";
   leftIcon?: React.ReactElement;
   rightIcon?: React.ReactElement;
-  iconClasses?: string;
   text: string;
 }
 
@@ -16,7 +15,6 @@ function Button({
   version = "solid",
   leftIcon,
   rightIcon,
-  iconClasses,
   text,
 }: ButtonProps) {
   const cn = classNames(
@@ -34,17 +32,16 @@ function Button({
         ]
   );
 
+  const CNtextWrapper = classNames(
+    leftIcon && "ml-3",
+    rightIcon && "mr-3"
+  );
+
   return (
     <button className={cn}>
-      {leftIcon &&
-        React.cloneElement(leftIcon, {
-          className: iconClasses || "mr-3",
-        })}
-      {text}
-      {rightIcon &&
-        React.cloneElement(rightIcon, {
-          className: iconClasses || "ml-3",
-        })}
+      {leftIcon}
+      <span className={CNtextWrapper}>{text}</span>
+      {rightIcon}
     </button>
   );
 }
