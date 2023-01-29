@@ -9,19 +9,24 @@ interface IconWithBadgeProps {
   icon: React.ReactElement;
   number?: number;
   badgeBackgroundColor?: _VARIANTTYPES;
+  onClick: () => void;
 }
 
 function IconWithBadge({
   icon,
   number,
   badgeBackgroundColor = "primary",
+  onClick
 }: IconWithBadgeProps) {
   const cn = classNames(
     "absolute rounded-full top-[-10px] right-[-10px] flex h-4 w-4 items-center justify-center p-1 text-[9px] text-white",
     badgeBackgroundColor && `bg-${badgeBackgroundColor}`
   );
   return (
-    <div className="relative flex w-fit">
+    <div
+      className="relative flex w-fit cursor-pointer"
+      onClick={onClick}
+    >
       {icon}
       <div className={cn}>{number}</div>
     </div>

@@ -10,12 +10,17 @@ export default {
   component: IconWithBadge,
 } as ComponentMeta<typeof IconWithBadge>;
 
+function onClick() {
+  console.log("clicked");
+}
+
 export const WithCustomIconClasses: ComponentStory<
   typeof IconWithBadge
 > = () => (
   <IconWithBadge
     icon={<TwitchLogo size={22} />}
     number={31}
+    onClick={onClick}
   />
 );
 WithCustomIconClasses.storyName = "Twitch logo";
@@ -27,6 +32,7 @@ export const DefaultSizeWithBadgeColor: ComponentStory<
     icon={<TwitterLogo size={22} />}
     number={4}
     badgeBackgroundColor="danger"
+    onClick={onClick}
   />
 );
 DefaultSizeWithBadgeColor.storyName =
