@@ -1,4 +1,5 @@
 import { _VARIANTTYPES } from "./vars";
+import classNames from "classnames";
 
 interface AlertProps {
   title?: string;
@@ -7,26 +8,31 @@ interface AlertProps {
   icon?: React.ReactElement;
 }
 
-const background = {
-  success: "bg-success-light text-success",
-  warning: "bg-warning-light text-warning",
-  danger: "bg-danger-light text-danger",
-  primary: "bg-primary-light text-primary",
-};
+function Alert({
+  title,
+  text,
+  icon,
+  variant = "primary",
+}: AlertProps) {
+  const CNWrapper = classNames(
+    "flex w-full rounded py-3 px-[14px]",
+    `bg-${variant}-light text-${variant}`
+  );
 
-function Alert({ title, text, icon, variant = "primary" }: AlertProps) {
+  const CNIconClasses = classNames(
+    "flex items-center justify-center pl-2 pr-5",
+    title ? "text-2xl" : "text-lg"
+  );
+
   return (
-    <div className={`flex rounded w-full py-3 px-[14px] ${background[variant]}`}>
-      {icon && (
-        <div
-          className={`flex items-center justify-center pl-2 pr-5 ${title ? "text-2xl" : "text-lg"
-            }`}
-        >
-          {icon}
-        </div>
-      )}
+    <div className={CNWrapper}>
+      {icon && <div className={CNIconClasses}>{icon}</div>}
       <div>
-        {title && <span className="text-base font-semibold block">{title}</span>}
+        {title && (
+          <span className="block text-base font-semibold">
+            {title}
+          </span>
+        )}
         <span className="text-sm font-medium">{text}</span>
       </div>
     </div>

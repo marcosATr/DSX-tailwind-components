@@ -13,7 +13,7 @@ export const Primary: ComponentStory<typeof Alert> = () => (
   <Alert text="This is the primary alert variant" />
 );
 
-export const Success: ComponentStory<typeof Alert> = () => (
+export const Success_with_title_prop: ComponentStory<typeof Alert> = () => (
   <Alert
     title="This text is supposed to appear on the first line and be a bit bigger."
     text="This is the success alert variant"

@@ -1,8 +1,9 @@
 import classNames from "classnames";
 import React from "react";
+import { _VARIANTTYPES } from "./vars";
 
 interface ButtonProps {
-  variant: "success" | "warning" | "danger" | "primary";
+  variant: _VARIANTTYPES;
   version?: "solid" | "transparent";
   leftIcon?: React.ReactElement;
   rightIcon?: React.ReactElement;
