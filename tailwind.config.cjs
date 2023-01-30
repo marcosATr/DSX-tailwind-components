@@ -20,6 +20,7 @@ module.exports = {
       //TYPOGRAPHY
       lightText: "#b7b5be",
       defaultText: "#6f6b7d",
+      heading: "#4B465C",
       //BORDERS
       lightBorder: "#DBDADE",
       //STATE
