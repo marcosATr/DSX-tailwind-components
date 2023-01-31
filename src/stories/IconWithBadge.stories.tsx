@@ -31,7 +31,7 @@ export const DefaultSizeWithBadgeColor: ComponentStory<
   <IconWithBadge
     icon={<TwitterLogo size={22} />}
     number={4}
-    badgeBackgroundColor="danger"
+    variant="danger"
     onClick={onClick}
   />
 );
