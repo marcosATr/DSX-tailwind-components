@@ -8,6 +8,7 @@ interface ButtonProps {
   leftIcon?: React.ReactElement;
   rightIcon?: React.ReactElement;
   text: string;
+  className?: string;
 }
 
 function Button({
@@ -16,6 +17,7 @@ function Button({
   leftIcon,
   rightIcon,
   text,
+  className,
 }: ButtonProps) {
   const cn = classNames(
     "px-[20px] py-[10px] text-[15px] font-medium rounded shadow-sm flex items-center",
@@ -29,7 +31,8 @@ function Button({
           "hover:brightness-90",
           `text-${variant}`,
           `bg-${variant}-light`,
-        ]
+        ],
+    className && className
   );
 
   const CNtextWrapper = classNames(
