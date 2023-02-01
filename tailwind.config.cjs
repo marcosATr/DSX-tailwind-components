@@ -16,6 +16,7 @@ module.exports = {
       danger: "#EA5455",
       warning: "#FF9F43",
       //EXTRA
+      grayLight: "#f4f4f5",
       gray: "#e5e5e6",
       //TYPOGRAPHY
       lightText: "#b7b5be",

@@ -6,16 +6,19 @@ interface AccordionWrapper {
   className?: string;
 }
 
+type AccordionState = {
+  [T: string]: boolean;
+};
+
 interface AccordionProps {
   labelIcon?: React.ReactNode;
   label: string;
-  open: boolean;
+  accordionState: AccordionState;
   id: string;
   component: React.ReactNode;
+  highlight?: boolean;
   setAccordionState: React.Dispatch<
-    React.SetStateAction<{
-      [T: string]: boolean;
-    }>
+    React.SetStateAction<AccordionState>
   >;
 }
 
@@ -33,53 +36,59 @@ function AccordionWrapper({
 function Accordion({
   labelIcon,
   label,
-  open,
+  accordionState,
   id,
   component,
+  highlight,
   setAccordionState,
 }: AccordionProps) {
+  const CNItemWrapper = classNames(
+    "border-b border-solid border-lightBorder last:border-b-0 relative ",
+    highlight &&
+      !!accordionState?.[id] &&
+      "bg-grayLight before:absolute before:h-full before:w-[3px] before:bg-primary before:top before:first:rounded-[6px] before:last:rounded-tl-bl-[6px]"
+  );
+
+  const CNAccordionHandle = classNames(
+    "flex items-center py-4 px-6 text-sm w-full cursor-pointer",
+    highlight && !!accordionState?.[id]
+      ? "text-primary"
+      : "text-heading"
+  );
+
   const CNTextLabel = classNames(
     "font-semibold",
     labelIcon && "ml-3"
   );
 
-  const CNAccordionItem = classNames(
-    "flex items-center py-4 px-6 text-sm text-heading w-full"
-  );
+  const handleOpenClose = () => {
+    setAccordionState((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
 
   return (
-    <div className="border-b border-solid border-lightBorder last:border-b-0">
+    <div className={CNItemWrapper}>
       <div
-        className={CNAccordionItem}
-        id={id}
+        className={CNAccordionHandle}
+        onClick={handleOpenClose}
       >
         {labelIcon}
         <span className={CNTextLabel}>{label}</span>
-        {open ? (
+        {!!accordionState?.[id] ? (
           <Minus
             size={20}
-            className="ml-auto cursor-pointer"
-            onClick={() =>
-              setAccordionState((prev) => ({ //TODO: externalize state management, create toggle mode
-                ...prev,
-                [id]: !prev[id],
-              }))
-            }
+            className="ml-auto text-heading"
           />
         ) : (
           <Plus
             size={20}
             className="ml-auto cursor-pointer"
-            onClick={() =>
-              setAccordionState((prev) => ({ //TODO: externalize state management, create toggle mode
-                ...prev,
-                [id]: !prev[id],
-              }))
-            }
           />
         )}
       </div>
-      {open && (
+      {!!accordionState?.[id] && (
         <div className="w-full px-6 pb-4">{component}</div>
       )}
     </div>
