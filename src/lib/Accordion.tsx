@@ -1,14 +1,25 @@
 import classNames from "classnames";
 import { Minus, Plus } from "phosphor-react";
+import { useState } from "react";
 
-interface AccordionWrapper {
-  children: React.ReactNode;
-  className?: string;
+interface AccordionItem {
+  labelIcon?: React.ReactNode;
+  label: string;
+  id: string;
+  component: React.ReactNode;
 }
 
 type AccordionState = {
   [T: string]: boolean;
 };
+
+interface AccordionWrapper {
+  items: AccordionItem[];
+  highlight?: boolean;
+  className?: string;
+  mode?: "single" | "multiple";
+  initialState?: AccordionState;
+}
 
 interface AccordionProps {
   labelIcon?: React.ReactNode;
@@ -17,20 +28,7 @@ interface AccordionProps {
   id: string;
   component: React.ReactNode;
   highlight?: boolean;
-  setAccordionState: React.Dispatch<
-    React.SetStateAction<AccordionState>
-  >;
-}
-
-function AccordionWrapper({
-  children,
-  className,
-}: AccordionWrapper) {
-  const CNWrapper = classNames(
-    "rounded-[6px] border border-solid border-lightBorder",
-    className && className
-  );
-  return <div className={CNWrapper}>{children}</div>;
+  handleOpenClose: () => void;
 }
 
 function Accordion({
@@ -40,7 +38,7 @@ function Accordion({
   id,
   component,
   highlight,
-  setAccordionState,
+  handleOpenClose,
 }: AccordionProps) {
   const CNItemWrapper = classNames(
     "border-b border-solid border-lightBorder last:border-b-0 relative ",
@@ -60,13 +58,6 @@ function Accordion({
     "font-semibold",
     labelIcon && "ml-3"
   );
-
-  const handleOpenClose = () => {
-    setAccordionState((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
-  };
 
   return (
     <div className={CNItemWrapper}>
@@ -91,6 +82,55 @@ function Accordion({
       {!!accordionState?.[id] && (
         <div className="w-full px-6 pb-4">{component}</div>
       )}
+    </div>
+  );
+}
+
+function AccordionWrapper({
+  className,
+  mode = "multiple",
+  highlight,
+  items,
+  initialState,
+}: AccordionWrapper) {
+  const CNWrapper = classNames(
+    "rounded-[6px] border border-solid border-lightBorder",
+    className && className
+  );
+
+  const [accordionState, setAccordionState] = useState<{
+    [T: string]: boolean;
+  }>(initialState || {});
+
+  const handleOpenClose = (id) => {
+    setAccordionState((prev) => {
+      return mode === "multiple"
+        ? {
+            ...prev,
+            [id]: !prev[id],
+          }
+        : {
+            [id]: !prev[id],
+          };
+    });
+  };
+
+  return (
+    <div className={CNWrapper}>
+      {items.map((item) => {
+        return (
+          <Accordion
+            label={item.label}
+            labelIcon={item.labelIcon}
+            key={item.id}
+            id={item.id}
+            component={item.component}
+            handleOpenClose={() => handleOpenClose(item.id)}
+            accordionState={accordionState}
+            highlight={highlight}
+          />
+        );
+      })}
     </div>
   );
 }
