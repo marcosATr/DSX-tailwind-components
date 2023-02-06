@@ -60,7 +60,15 @@ function Accordion({
   );
 
   return (
-    <div className={CNItemWrapper}>
+    <div
+      className={CNItemWrapper}
+      style={{
+        maxHeight: !!accordionState?.[id] ? '400px' : "52px",
+        overflow: "hidden",
+        transition: "max-height 1s ease",
+
+      }}
+    >
       <div
         className={CNAccordionHandle}
         onClick={handleOpenClose}
