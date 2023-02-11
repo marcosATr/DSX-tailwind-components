@@ -30,6 +30,7 @@ interface AccordionProps {
   component: React.ReactNode;
   highlight?: boolean;
   handleOpenClose: () => void;
+  animationClasses: string;
 }
 
 function Accordion({
@@ -40,12 +41,14 @@ function Accordion({
   component,
   highlight,
   handleOpenClose,
+  animationClasses,
 }: AccordionProps) {
   const CNItemWrapper = classNames(
-    "border-b border-solid border-lightBorder last:border-b-0 relative ",
+    "border-b border-solid border-lightBorder last:border-b-0 relative max-h-[53px]",
     highlight &&
       !!accordionState?.[id] &&
-      "bg-grayLight before:absolute before:h-full before:w-[3px] before:bg-primary before:top before:first:rounded-[6px] before:last:rounded-tl-bl-[6px]"
+      "bg-grayLight before:absolute before:h-full before:w-[3px] before:bg-primary before:top before:first:rounded-[6px] before:last:rounded-tl-bl-[6px]",
+    animationClasses && animationClasses
   );
 
   const CNAccordionHandle = classNames(
@@ -64,11 +67,8 @@ function Accordion({
     <div
       className={CNItemWrapper}
       style={{
-        maxHeight: !!accordionState?.[id]
-          ? "900px"
-          : "53px",
         overflow: "hidden",
-        transition: "max-height 1s ease",
+        transition: "max-height 400ms ease",
       }}
     >
       <div
@@ -112,25 +112,43 @@ function AccordionWrapper({
     [T: string]: boolean;
   }>(initialState || {});
 
+  const [transitionClasses, setTransitionClasses] =
+    useState<{
+      [T: string]: string;
+    }>({});
+
+  const updateClasses = (id, classes: string) =>
+    setTransitionClasses((prev) => ({
+      ...prev,
+      [id]: classes,
+    }));
+
+  const updateAccordionState = (id) =>
+    setAccordionState((prev) => {
+      return mode === "multiple"
+        ? {
+            ...prev,
+            [id]: !prev[id],
+          }
+        : {
+            [id]: !prev[id],
+          };
+    });
+
   const handleOpenClose = (id) => {
-    const updateAccordionState = () =>
-      setAccordionState((prev) => {
-        return mode === "multiple"
-          ? {
-              ...prev,
-              [id]: !prev[id],
-            }
-          : {
-              [id]: !prev[id],
-            };
-      });
     const delayedUpdate = debounce(
-      updateAccordionState,
-      500
+      () => updateAccordionState(id),
+      450
     );
     accordionState[id]
-      ? delayedUpdate()
-      : updateAccordionState();
+      ? (function () {
+          updateClasses(id, "max-h-[53px]");
+          delayedUpdate();
+        })()
+      : (function () {
+          updateAccordionState(id);
+          updateClasses(id, "max-h-[999px]");
+        })();
   };
 
   return (
@@ -146,6 +164,7 @@ function AccordionWrapper({
             handleOpenClose={() => handleOpenClose(item.id)}
             accordionState={accordionState}
             highlight={highlight}
+            animationClasses={transitionClasses[item.id]}
           />
         );
       })}
