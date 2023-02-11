@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { debounce } from "lodash";
 import { Minus, Plus } from "phosphor-react";
 import { useState } from "react";
 
@@ -63,10 +64,11 @@ function Accordion({
     <div
       className={CNItemWrapper}
       style={{
-        maxHeight: !!accordionState?.[id] ? '400px' : "52px",
+        maxHeight: !!accordionState?.[id]
+          ? "900px"
+          : "53px",
         overflow: "hidden",
         transition: "max-height 1s ease",
-
       }}
     >
       <div
@@ -111,16 +113,24 @@ function AccordionWrapper({
   }>(initialState || {});
 
   const handleOpenClose = (id) => {
-    setAccordionState((prev) => {
-      return mode === "multiple"
-        ? {
-            ...prev,
-            [id]: !prev[id],
-          }
-        : {
-            [id]: !prev[id],
-          };
-    });
+    const updateAccordionState = () =>
+      setAccordionState((prev) => {
+        return mode === "multiple"
+          ? {
+              ...prev,
+              [id]: !prev[id],
+            }
+          : {
+              [id]: !prev[id],
+            };
+      });
+    const delayedUpdate = debounce(
+      updateAccordionState,
+      500
+    );
+    accordionState[id]
+      ? delayedUpdate()
+      : updateAccordionState();
   };
 
   return (
