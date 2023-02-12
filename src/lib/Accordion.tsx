@@ -78,13 +78,13 @@ function Accordion({
   const CNItemWrapper = classNames(
     "border-b border-solid border-lightBorder last:border-b-0 relative",
     highlight &&
-      !!accordionState?.[id] &&
+      showAccordionItem &&
       "bg-grayLight before:absolute before:h-full before:w-[3px] before:bg-primary before:top before:first:rounded-[6px] before:last:rounded-tl-bl-[6px]"
   );
 
   const CNAccordionHandle = classNames(
     "flex items-center py-4 px-6 text-sm w-full cursor-pointer",
-    highlight && !!accordionState?.[id]
+    highlight && showAccordionItem
       ? "text-primary"
       : "text-heading"
   );
@@ -99,7 +99,7 @@ function Accordion({
       className={CNItemWrapper}
       style={{
         overflow: "hidden",
-        transition: "max-height 400ms ease",
+        transition: "all 400ms ease",
         maxHeight: showAccordionItem ? height + 54 : "54px",
       }}
     >
