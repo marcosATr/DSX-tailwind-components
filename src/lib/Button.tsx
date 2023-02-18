@@ -3,24 +3,24 @@ import React from "react";
 import { _VARIANTTYPES } from "./vars";
 
 interface ButtonProps {
-  variant: _VARIANTTYPES;
+  variant?: _VARIANTTYPES;
   version?: "solid" | "transparent";
   leftIcon?: React.ReactElement;
   rightIcon?: React.ReactElement;
-  text: string;
+  children?: string;
   className?: string;
 }
 
 function Button({
-  variant,
+  variant = "primary",
   version = "solid",
   leftIcon,
   rightIcon,
-  text,
+  children,
   className,
 }: ButtonProps) {
   const cn = classNames(
-    "px-[20px] py-[10px] text-[15px] font-medium rounded shadow-sm flex items-center",
+    "px-[20px] py-[10px] text-[15px] font-medium rounded shadow-sm flex items-center leading-[1.1rem]",
     version === "solid"
       ? [
           "hover:saturate-150",
@@ -43,7 +43,7 @@ function Button({
   return (
     <button className={cn}>
       {leftIcon}
-      <span className={CNtextWrapper}>{text}</span>
+      <span className={CNtextWrapper}>{children}</span>
       {rightIcon}
     </button>
   );
