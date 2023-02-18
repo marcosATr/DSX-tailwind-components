@@ -13,39 +13,19 @@ export default {
 
 export const PrimaryButton: ComponentStory<
   typeof Button
-> = () => (
-  <Button
-    variant="primary"
-    text="Primary"
-  />
-);
+> = () => <Button variant="primary">Primary</Button>;
 
 export const SuccessButton: ComponentStory<
   typeof Button
-> = () => (
-  <Button
-    variant="success"
-    text="Success"
-  />
-);
+> = () => <Button variant="success">Success</Button>;
 
 export const DangerButton: ComponentStory<
   typeof Button
-> = () => (
-  <Button
-    variant="danger"
-    text="Danger"
-  />
-);
+> = () => <Button variant="danger">danger</Button>;
 
 export const WarningButton: ComponentStory<
   typeof Button
-> = () => (
-  <Button
-    variant="warning"
-    text="Warning"
-  />
-);
+> = () => <Button variant="warning">warning</Button>;
 
 export const PrimaryTransparentButton: ComponentStory<
   typeof Button
@@ -53,8 +33,9 @@ export const PrimaryTransparentButton: ComponentStory<
   <Button
     variant="primary"
     version="transparent"
-    text="Primary"
-  />
+  >
+    primary
+  </Button>
 );
 
 export const SuccessTransparentButton: ComponentStory<
@@ -63,8 +44,9 @@ export const SuccessTransparentButton: ComponentStory<
   <Button
     variant="success"
     version="transparent"
-    text="Success"
-  />
+  >
+    Success
+  </Button>
 );
 
 export const DangerTransparentButton: ComponentStory<
@@ -73,8 +55,9 @@ export const DangerTransparentButton: ComponentStory<
   <Button
     variant="danger"
     version="transparent"
-    text="Danger"
-  />
+  >
+    Danger
+  </Button>
 );
 
 export const WarningTransparentButton: ComponentStory<
@@ -83,8 +66,9 @@ export const WarningTransparentButton: ComponentStory<
   <Button
     variant="warning"
     version="transparent"
-    text="Warning"
-  />
+  >
+    Warning
+  </Button>
 );
 
 export const WithLeftIcon: ComponentStory<
@@ -93,9 +77,10 @@ export const WithLeftIcon: ComponentStory<
   <Button
     variant="primary"
     version="transparent"
-    text="Support"
     leftIcon={<Clipboard />}
-  />
+  >
+    with Icon
+  </Button>
 );
 
 export const WithRightIcon: ComponentStory<
@@ -104,9 +89,10 @@ export const WithRightIcon: ComponentStory<
   <Button
     variant="primary"
     version="transparent"
-    text="Support"
     rightIcon={<PhoneCall size={20} />}
-  />
+  >
+    Right Icon
+  </Button>
 );
 
 WithRightIcon.parameters = {
