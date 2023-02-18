@@ -23,7 +23,8 @@ function Button({
     "px-[20px] py-[10px] text-[15px] font-medium rounded shadow-sm flex items-center leading-[1.1rem]",
     version === "solid"
       ? [
-          "hover:saturate-150",
+          "hover:brightness-[1.13]",
+          "ease-in duration-100",
           "text-white",
           `bg-${variant}`,
         ]

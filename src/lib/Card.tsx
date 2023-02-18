@@ -4,11 +4,12 @@ import { Typography } from ".";
 
 interface ICardProps {
   image?: string;
-  title: string;
-  text: string;
+  title?: string;
+  text?: string;
   interaction?: ReactNode;
   wrapperClasses?: string;
-  direction?: "vertical" | "horizontal";
+  variant?: "default" | "small" | "horizontal";
+  clamp?: boolean;
 }
 export default function Card({
   image,
@@ -16,33 +17,48 @@ export default function Card({
   text,
   interaction,
   wrapperClasses,
-  direction = "vertical",
+  variant="default",
+  clamp,
 }: ICardProps) {
-  const CNWrapper = twMerge(
+  const properties = {
+    default: "flex-col w-[356px]",
+    small: "w-[271px] flex-col",
+    horizontal: "h-[208px] w-[568px]",
+  };
+  const CNWrapper = twMerge([
     "flex rounded bg-white shadow",
-    direction === "vertical"
-      ? "flex-col w-[356px]"
-      : "h-[208px] w-[568px]",
-    wrapperClasses
-  );
+    properties[variant],
+    wrapperClasses,
+  ]);
+
   const CNImageWrapper = twMerge(
-    direction === "vertical"
+    variant === "default"
       ? "rounded-t"
       : "min-w-[200px] h-[208px] rounded-l object-cover"
   );
+
+  const CNText = twMerge([
+    !!title && "mt-4",
+    clamp && "line-clamp-3",
+  ]);
+
   return (
     <div className={CNWrapper}>
       {image && (
         <div className={CNImageWrapper}>
           <img
             className={CNImageWrapper}
-            src="https://images.unsplash.com/photo-1528127269322-539801943592?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlldG5hbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60"
+            src={image}
           />
         </div>
       )}
       <div className="p-6">
-        <Typography variant="h5">{title}</Typography>
-        <Typography className="mt-4">{text}</Typography>
+        {title && (
+          <Typography variant="h5">{title}</Typography>
+        )}
+        {text && (
+          <Typography className={CNText}>{text}</Typography>
+        )}
         {interaction}
       </div>
     </div>
