@@ -9,5 +9,6 @@ export { default as IconWithBadge } from "./IconWithBadge";
 export { default as InputRadio } from "./InputRadio";
 export { default as InputText } from "./InputText";
 export { default as RadioSearchCombo } from "./RadioSearchCombo";
+export { default as Surface } from "./Surface";
 export { default as Tag } from "./Tag";
 export { default as Typography } from "./Typography";
