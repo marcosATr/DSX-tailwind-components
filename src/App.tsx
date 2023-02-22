@@ -4,9 +4,14 @@ import {
   createBrowserRouter,
 } from "react-router-dom";
 import { Typography } from "./lib";
+import Dropdown from "./lib/Dropdown";
 
 function OutsideClick() {
-  return <Typography>test</Typography>;
+  return (
+    <>
+      <Dropdown text='Dropdown' />
+    </>
+  );
 }
 const router = createBrowserRouter([
   {
