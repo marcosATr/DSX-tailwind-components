@@ -29,7 +29,8 @@ module.exports = {
       "success-light": "rgba(40, 199, 111, 0.16)",
       "danger-light": "rgba(75, 75, 75, 0.16)",
       "warning-light": "rgba(255, 159, 67, 0.16)",
-
+      //HELPERS
+      "opacity-10": "#00000010",
       //TODO: Update and remove
       "gray-600": "rgba(255, 255, 255, 0.8)",
       "gray-300": "rgba(255, 255, 255, 0.5)",
@@ -53,6 +54,14 @@ module.exports = {
     "text-danger",
     "text-warning",
     "text-gray",
+    "border-primary",
+    "border-success",
+    "border-danger",
+    "border-warning",
+    "border-gray",
+    // {
+    //  pattern: /border-(primary|success|danger|warning)/,
+    // },
   ],
   plugins: [],
 };

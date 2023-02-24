@@ -1,6 +1,10 @@
 import { useEffect } from "react";
 
-export default function useClickOutside(ref, callback) {
+export default function useClickOutside(
+  ref,
+  callback,
+  active
+) {
   useEffect(() => {
     const listener = (event) => {
       if (
@@ -11,13 +15,14 @@ export default function useClickOutside(ref, callback) {
       }
       callback(event);
     };
-
-    document.addEventListener("mousedown", listener);
-    document.addEventListener("touchstart", listener);
+    if (ref.current && active) {
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
+    }
 
     return () => {
       document.removeEventListener("mousedown", listener);
       document.removeEventListener("touchstart", listener);
     };
-  }, [ref, callback]);
+  }, [active, callback]);
 }
