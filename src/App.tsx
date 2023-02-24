@@ -17,6 +17,7 @@ const options = [
     handleClick: () => console.log("2"),
   },
 ];
+
 function OutsideClick() {
   return (
     <>

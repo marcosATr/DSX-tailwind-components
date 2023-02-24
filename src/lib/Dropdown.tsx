@@ -11,25 +11,34 @@ type Options = {
   value: string;
 }[];
 
-interface IDropdownProps {
+interface IDropdownProps extends IMenuProps {
   text: string;
-  variant?: _VARIANTTYPES;
   outlined?: boolean;
   className?: string;
-  options: Options;
 }
 
 interface IMenuProps {
   options: Options;
+  variant?: _VARIANTTYPES;
 }
 
-function Menu({ options }: IMenuProps) {
+function Menu({ options, variant }: IMenuProps) {
+  const CNMenuItem = twMerge([
+    "group cursor-pointer rounded px-4 py-2",
+    `hover:bg-${variant}`,
+  ]);
   return (
-    <div className="absolute top-[48px] z-20 flex w-full flex-col gap-1 rounded bg-white p-2 shadow">
+    <div
+      className={twMerge([
+        "absolute top-[48px] z-20 flex w-full flex-col gap-1 rounded bg-white p-2 shadow",
+        "border",
+        `border-${variant}`,
+      ])}
+    >
       {options.map((option) => (
         <div
           key={option.id}
-          className="group cursor-pointer rounded px-4 py-2 hover:bg-primary"
+          className={CNMenuItem}
           onClick={(e) => {
             e.stopPropagation();
             option.handleClick();
@@ -98,7 +107,12 @@ function Dropdown({
           />
         </div>
       </button>
-      {open && <Menu options={options} />}
+      {open && (
+        <Menu
+          options={options}
+          variant={variant}
+        />
+      )}
     </div>
   );
 }

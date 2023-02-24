@@ -39,11 +39,11 @@ module.exports = {
     extend: {},
   },
   safelist: [
-    "bg-primary",
-    "bg-success",
-    "bg-danger",
-    "bg-warning",
-    "bg-gray",
+    // "bg-primary",
+    // "bg-success",
+    // "bg-danger",
+    // "bg-warning",
+    // "bg-gray",
     "bg-primary-light",
     "bg-success-light",
     "bg-danger-light",
@@ -59,9 +59,10 @@ module.exports = {
     "border-danger",
     "border-warning",
     "border-gray",
-    // {
-    //  pattern: /border-(primary|success|danger|warning)/,
-    // },
+    {
+     pattern: /bg-(primary|success|danger|warning)/,
+     variants: ['hover'],
+    },
   ],
   plugins: [],
 };
