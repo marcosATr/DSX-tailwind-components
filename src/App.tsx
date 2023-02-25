@@ -1,9 +1,10 @@
+import { useState } from "react";
 import {
   Link,
   RouterProvider,
   createBrowserRouter,
 } from "react-router-dom";
-import { Typography, Dropdown, Button } from "./lib";
+import { Typography, Dropdown, Button, Modal } from "./lib";
 
 const options = [
   {
@@ -19,24 +20,54 @@ const options = [
 ];
 
 function OutsideClick() {
+  const [open, setOpen] = useState(false);
+  const [open2, setOpen2] = useState(false);
   return (
     <>
-      <Dropdown text="Dropdown" options={options}/>
+      <button onClick={() => setOpen(!open)}>modal</button>
+      <Modal
+        open={open}
+        handleClose={() => setOpen(false)}
+      >
+        <Typography variant="h4">
+          Important title
+        </Typography>
+        <Typography className="mt-4">
+          Lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+          lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+          lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+          lorem ipsum
+        </Typography>
+        <div className="mt-8 ml-auto flex gap-2">
+          <button onClick={() => setOpen2(!open2)}>
+            modal2
+          </button>
+          <Button variant="danger">Discard</Button>
+          <Button>Save</Button>
+        </div>
+        <Modal
+          open={open2}
+          handleClose={() => setOpen2(false)}
+        >
+          nested modal
+        </Modal>
+      </Modal>
 
-      <Dropdown
-        text="Dropdown"
-        className="mt-4"
-        variant="success"
-        options={options}
-      />
+      <Typography variant="h4">Important title</Typography>
+      <Typography>
+        Lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+        lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+        lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+        lorem ipsum
+      </Typography>
 
-      <Dropdown
-        text="Dropdown"
-        className="mt-4"
-        variant="primary"
-        outlined
-        options={options}
-      />
+      <Typography variant="h4">Important title</Typography>
+      <Typography>
+        Lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+        lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+        lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+        lorem ipsum
+      </Typography>
     </>
   );
 }
