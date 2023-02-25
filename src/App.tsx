@@ -21,6 +21,7 @@ const options = [
 
 function OutsideClick() {
   const [open, setOpen] = useState(false);
+  const [open2, setOpen2] = useState(false);
   return (
     <>
       <button onClick={() => setOpen(!open)}>modal</button>
@@ -39,9 +40,16 @@ function OutsideClick() {
           lorem ipsum
         </Typography>
         <div className="mt-8 ml-auto flex gap-2">
+          <button onClick={()=> setOpen2(true)}>second</button>
           <Button variant="danger">Discard</Button>
           <Button>Save</Button>
         </div>
+        <Modal
+          open={open2}
+          className="mt-2"
+        >
+          second modal
+        </Modal>
       </Modal>
       <Typography variant="h4">Important title</Typography>
       <Typography>
