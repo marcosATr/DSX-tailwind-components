@@ -27,6 +27,7 @@ function OutsideClick() {
       <Modal
         open={open}
         handleClose={() => setOpen(false)}
+        closeOnClickOutside
       >
         <Typography variant="h4">
           Important title
