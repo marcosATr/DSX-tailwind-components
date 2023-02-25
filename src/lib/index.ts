@@ -10,6 +10,7 @@ export { default as IconWithBadge } from "./IconWithBadge";
 export { default as InputRadio } from "./InputRadio";
 export { default as InputText } from "./InputText";
 export { default as ListGroup } from "./ListGroup";
+export { default as Modal } from "./Modal";
 export { default as RadioSearchCombo } from "./RadioSearchCombo";
 export { default as Surface } from "./Surface";
 export { default as Tag } from "./Tag";
