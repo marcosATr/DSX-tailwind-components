@@ -30,7 +30,7 @@ function Menu({ options, variant }: IMenuProps) {
   return (
     <div
       className={twMerge([
-        "absolute top-[48px] z-20 flex w-full flex-col gap-1 rounded bg-white p-2 shadow",
+        "absolute top-[42px] z-20 flex w-full flex-col gap-1 rounded bg-white p-1 shadow",
         "border",
         `border-${variant}`,
       ])}
@@ -84,10 +84,10 @@ function Dropdown({
 
   const CNIcon = twMerge([
     "transition-all",
-    open ? "-rotate-90" : "rotate-0",
+    open ? "rotate-0" : "-rotate-90",
   ]);
 
-  function handleClick(e) {
+  function handleClick() {
     setOpen(!open);
   }
 
