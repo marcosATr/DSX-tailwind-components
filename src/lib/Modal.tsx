@@ -1,44 +1,36 @@
 import { X } from "phosphor-react";
-import { useRef } from "react";
-import { createPortal } from "react-dom";
+import { ReactNode, useRef } from "react";
 import { twMerge } from "tailwind-merge";
-import { useClickOutside } from "./utils";
+import { useClickOutside, useOverlay } from "./utils";
 
-const useOverlay = (active: boolean) => {
-  const modalRoot = document.getElementById("root");
-  return active
-    ? createPortal(
-        <div
-          id="modaloverlay"
-          className="absolute top-0 left-0 z-40 h-screen w-screen bg-black opacity-60"
-        ></div>,
-        modalRoot!
-      )
-    : null;
-};
+interface IModalProps {
+  children: ReactNode;
+  className?: string;
+  closeOnClickOutside?: boolean;
+  open: boolean;
+  handleClose?: () => void;
+}
 
 function ModalContent({
-  content,
+  children,
   className,
   handleClose,
   closeOnClickOutside,
   open,
-}) {
+}: IModalProps) {
   const ref = useRef(null);
+
   useClickOutside(
     ref,
     handleClose,
     closeOnClickOutside && open
   );
 
-  const overlay = useOverlay(open);
+  const overlay = useOverlay();
 
   return (
     <>
-      {/* overlay */}
-      {/* <div className="absolute top-0 left-0 z-40 h-screen w-screen bg-black opacity-60"></div> */}
       {/* modal */}
-      {overlay}
       <div
         ref={ref}
         className={twMerge([
@@ -56,27 +48,29 @@ function ModalContent({
             weight="bold"
           />
         </div>
-        {content}
+        {children}
       </div>
+      {overlay}
     </>
   );
 }
 
 function Modal({
-  open,
   children,
+  open,
   className,
   handleClose,
   closeOnClickOutside,
-}) {
+}: IModalProps) {
   return open ? (
     <ModalContent
-      content={children}
       className={className}
       handleClose={handleClose}
       closeOnClickOutside={closeOnClickOutside}
       open={open}
-    />
+    >
+      {children}
+    </ModalContent>
   ) : null;
 }
 
