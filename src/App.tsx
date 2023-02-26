@@ -28,7 +28,8 @@ function OutsideClick() {
       <Modal
         open={open}
         handleClose={() => setOpen(false)}
-        closeOnClickOutside
+        closeOnClickOutside={!open2}
+        className="max-w-[800px]"
       >
         <Typography variant="h4">
           Important title
@@ -40,13 +41,17 @@ function OutsideClick() {
           lorem ipsum
         </Typography>
         <div className="mt-8 ml-auto flex gap-2">
-          <button onClick={()=> setOpen2(true)}>second</button>
+          <button onClick={() => setOpen2(true)}>
+            second
+          </button>
           <Button variant="danger">Discard</Button>
           <Button>Save</Button>
         </div>
         <Modal
           open={open2}
-          className="mt-2"
+          className="mt-2 w-[300px]"
+          closeOnClickOutside
+          handleClose={() => setOpen2(false)}
         >
           second modal
         </Modal>
