@@ -32,7 +32,7 @@ function ModalContent({
   );
 
   const overlay = useOverlay(open);
-  
+
   return (
     <>
       {/* overlay */}
@@ -51,7 +51,10 @@ function ModalContent({
           className="absolute top-[-14px] right-[-14px] cursor-pointer rounded bg-white p-[6px] text-defaultText shadow-md"
           onClick={handleClose}
         >
-          <X size={20} />
+          <X
+            size={20}
+            weight="bold"
+          />
         </div>
         {content}
       </div>
