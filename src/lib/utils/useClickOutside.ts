@@ -1,15 +1,15 @@
-import { useEffect } from "react";
+import { RefObject, useEffect } from "react";
 
 export default function useClickOutside(
-  ref,
-  callback,
-  active
+  ref: RefObject<HTMLDivElement>,
+  callback: (event: MouseEvent | TouchEvent) => void,
+  active: boolean
 ) {
   useEffect(() => {
-    const listener = (event) => {
+    const listener = (event: MouseEvent | TouchEvent) => {
       if (
         !ref.current ||
-        ref.current.contains(event.target)
+        ref.current.contains(event.target as Node)
       ) {
         return;
       }

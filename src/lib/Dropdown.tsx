@@ -64,7 +64,7 @@ function Dropdown({
   className,
 }: IDropdownProps) {
   const [open, setOpen] = useState(false);
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   useClickOutside(ref, () => setOpen(false), open);
 
   const CNButton = twMerge([

@@ -8,7 +8,7 @@ interface IModalProps {
   className?: string;
   closeOnClickOutside?: boolean;
   open: boolean;
-  handleClose?: () => void;
+  handleClose: () => void;
 }
 
 function ModalContent({
@@ -23,7 +23,7 @@ function ModalContent({
   useClickOutside(
     ref,
     handleClose,
-    closeOnClickOutside && open
+    !!closeOnClickOutside && open
   );
 
   const overlay = useOverlay();

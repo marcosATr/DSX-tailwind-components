@@ -47,7 +47,7 @@ function Accordion({
 }: AccordionProps) {
   const [showAccordionItem, setShowAccordionItem] =
     useState(!!accordionState?.[id]);
-  const [height, setHeight] = useState<number | unndefined>(
+  const [height, setHeight] = useState<number | undefined>(
     0
   );
   const ref = useRef<HTMLDivElement>(null);
@@ -100,7 +100,9 @@ function Accordion({
       style={{
         overflow: "hidden",
         transition: "all 400ms ease",
-        maxHeight: showAccordionItem ? height + 54 : "54px",
+        maxHeight: showAccordionItem
+          ? height! + 54
+          : "54px",
       }}
     >
       <div
@@ -149,7 +151,7 @@ function AccordionWrapper({
     [T: string]: boolean;
   }>(initialState || {});
 
-  const handleOpenClose = (id) => {
+  const handleOpenClose = (id: string) => {
     setAccordionState((prev) => {
       return mode === "multiple"
         ? {
