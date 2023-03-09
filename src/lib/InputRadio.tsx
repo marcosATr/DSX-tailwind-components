@@ -1,4 +1,4 @@
-interface InputRadioProps {
+export interface InputRadioProps {
   id: string;
   label: string;
   selected: string | undefined;

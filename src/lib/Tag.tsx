@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { _VARIANTTYPES } from "./vars";
 
-interface TagProps {
+export interface TagProps {
   text: string;
   variant?: _VARIANTTYPES;
   rounded?: boolean;

@@ -2,7 +2,7 @@ import React from "react";
 import { _VARIANTTYPES } from "./vars";
 import classNames from "classnames";
 
-interface BadgeProps {
+export interface BadgeProps {
   text: string | React.ReactElement;
   variant?: _VARIANTTYPES;
   version?: "solid" | "transparent";

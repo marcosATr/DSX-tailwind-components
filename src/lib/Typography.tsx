@@ -50,18 +50,18 @@ type AsTypes =
   | "span";
 
 type Variant = keyof typeof variants;
-
+export interface TypographyProps {
+  variant?: Variant;
+  as?: AsTypes;
+  className?: string;
+  children: React.ReactNode[] | React.ReactNode;
+}
 function Typography({
   variant = "paragraph",
   as,
   className,
   children,
-}: {
-  variant?: Variant;
-  as?: AsTypes;
-  className?: string;
-  children: React.ReactNode[] | React.ReactNode;
-}) {
+}: TypographyProps) {
   const CNtypography = twMerge(
     variants[variant],
     className

@@ -3,7 +3,7 @@ import { ReactNode, useRef } from "react";
 import { twMerge } from "tailwind-merge";
 import { useClickOutside, useOverlay } from "./utils";
 
-interface IModalProps {
+export interface IModalProps {
   children: ReactNode;
   className?: string;
   closeOnClickOutside?: boolean;

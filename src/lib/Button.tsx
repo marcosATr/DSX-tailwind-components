@@ -2,7 +2,7 @@ import classNames from "classnames";
 import React from "react";
 import { _VARIANTTYPES } from "./vars";
 
-interface ButtonProps {
+export interface ButtonProps {
   variant?: _VARIANTTYPES;
   version?: "solid" | "transparent";
   leftIcon?: React.ReactElement;

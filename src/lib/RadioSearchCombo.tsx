@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import InputRadio from "./InputRadio";
 import InputText from "./InputText";
 
-interface RadioSearchComboProps {
+export interface RadioSearchComboProps {
   placeholder?: string;
   options: { id: string; label: string }[];
   selected: string;

@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
 import Typography from "./Typography";
 
-interface IListGroupProp {
+export interface IListGroupProp {
   items: Item[];
   active?: Item["id"];
 }

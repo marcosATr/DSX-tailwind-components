@@ -11,13 +11,13 @@ type Options = {
   value: string;
 }[];
 
-interface IDropdownProps extends IMenuProps {
+export interface IDropdownProps extends IMenuProps {
   text: string;
   outlined?: boolean;
   className?: string;
 }
 
-interface IMenuProps {
+export interface IMenuProps {
   options: Options;
   variant?: _VARIANTTYPES;
 }

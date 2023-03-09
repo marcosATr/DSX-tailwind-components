@@ -1,15 +1,16 @@
 import { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
+export interface SurfaceProps {
+  children: ReactNode;
+  variant?: "outlined" | "default";
+  className?: string;
+}
 
 function Surface({
   children,
   variant = "default",
   className,
-}: {
-  children: ReactNode;
-  variant?: "outlined" | "default";
-  className?: string;
-}) {
+}: SurfaceProps) {
   const CNSurface = twMerge(
     "w-full rounded-md",
     variant === "default"

@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 import { Typography } from ".";
 
-interface ICardProps {
+export interface ICardProps {
   image?: string;
   title?: string;
   text?: string;

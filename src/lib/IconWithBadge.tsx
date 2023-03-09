@@ -5,7 +5,7 @@ interface IconProps {
   className: string;
 }
 
-interface IconWithBadgeProps {
+export interface IconWithBadgeProps {
   icon: React.ReactElement;
   number?: number;
   variant?: _VARIANTTYPES;

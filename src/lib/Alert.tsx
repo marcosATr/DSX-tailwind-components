@@ -1,7 +1,7 @@
 import { _VARIANTTYPES } from "./vars";
 import classNames from "classnames";
 
-interface AlertProps {
+export interface AlertProps {
   title?: string;
   text: string;
   variant?: _VARIANTTYPES;

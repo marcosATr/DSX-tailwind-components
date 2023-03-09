@@ -1,5 +1,5 @@
 
-interface InputTextProps {
+export interface InputTextProps {
   placeholder?: string;
   disabled?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;

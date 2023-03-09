@@ -16,7 +16,7 @@ type AccordionState = {
 
 type Mode = "single" | "multiple";
 
-interface AccordionWrapper {
+export interface AccordionWrapperProps {
   items: AccordionItem[];
   highlight?: boolean;
   className?: string;
@@ -24,7 +24,7 @@ interface AccordionWrapper {
   initialState?: AccordionState;
 }
 
-interface AccordionProps {
+export interface AccordionProps {
   labelIcon?: React.ReactNode;
   label: string;
   accordionState: AccordionState;
@@ -141,7 +141,7 @@ function AccordionWrapper({
   highlight,
   items,
   initialState,
-}: AccordionWrapper) {
+}: AccordionWrapperProps) {
   const CNWrapper = classNames(
     "rounded-[6px] border border-solid border-lightBorder",
     className && className

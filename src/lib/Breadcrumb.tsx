@@ -1,6 +1,6 @@
 import React from "react";
 
-interface BreadcrumbProps {
+export interface BreadcrumbProps {
   items: {
     linkComponent: React.ReactNode;
   }[];
