@@ -8,7 +8,7 @@ import {
 
 export default defineConfig({
   build: {
-    emptyOutDir: false,
+    emptyOutDir: true,
     outDir: "dist",
     sourcemap: true,
     lib: {
