@@ -10,13 +10,14 @@
     "dist",
     "README.md"
   ],
-  "main": "./dist/dsx-react-components.umd.js",
-  "module": "./dist/dsx-react-components.es.js",
+  "main": "dist/dsx-react-components.cjs.js",
+  "module": "dist/dsx-react-components.es.js",
   "exports": {
     ".": {
       "import": "./dist/dsx-react-components.es.js",
-      "require": "./dist/dsx-react-components.umd.js"
-    }
+      "require": "./dist/dsx-react-components.cjs.js"
+    },
+    "./style.css": "./dist/style.css"
   },
   "scripts": {
     "dev": "vite",

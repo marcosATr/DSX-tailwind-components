@@ -4,20 +4,24 @@
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "esnext"],
     "allowJs": false,
+    // "baseUrl": "./",
+    // "outDir": "./out-tsc/vite",
     "skipLibCheck": true,
     "esModuleInterop": false,
-    "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
     "moduleResolution": "node",
+    "strictFunctionTypes": false,
+    "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
+    "declaration": false,
     "isolatedModules": true,
-    "noImplicitAny": false, //changed
+    "noImplicitAny": false, 
     "noEmit": true,
-    "jsx": "react-jsx", //changed
-    "types": ["node"] //changed
+    "jsx": "react-jsx", 
+    "types": ["node"] 
   },
-  "include": ["**/*.ts"], //changed
+  "include": ["**/*.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

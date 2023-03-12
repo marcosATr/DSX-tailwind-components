@@ -1,3 +1,4 @@
+import "../index.css";
 export { default as Alert } from "./Alert";
 export { Accordion, AccordionWrapper } from "./Accordion";
 export { default as Badge } from "./Badge";
