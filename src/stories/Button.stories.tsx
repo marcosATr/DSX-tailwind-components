@@ -1,4 +1,4 @@
-// Alert.stories.js|jsx
+
 import { Button } from "../lib";
 import {
   ComponentStory,
@@ -13,19 +13,47 @@ export default {
 
 export const PrimaryButton: ComponentStory<
   typeof Button
-> = () => <Button variant="primary">Primary</Button>;
+> = () => (
+  <Button
+    variant="primary"
+    onClick={() => console.log("clicked")}
+  >
+    Primary
+  </Button>
+);
 
 export const SuccessButton: ComponentStory<
   typeof Button
-> = () => <Button variant="success">Success</Button>;
+> = () => (
+  <Button
+    variant="success"
+    onClick={() => console.log("clicked")}
+  >
+    Success
+  </Button>
+);
 
 export const DangerButton: ComponentStory<
   typeof Button
-> = () => <Button variant="danger">danger</Button>;
+> = () => (
+  <Button
+    variant="danger"
+    onClick={() => console.log("clicked")}
+  >
+    danger
+  </Button>
+);
 
 export const WarningButton: ComponentStory<
   typeof Button
-> = () => <Button variant="warning">warning</Button>;
+> = () => (
+  <Button
+    variant="warning"
+    onClick={() => console.log("clicked")}
+  >
+    warning
+  </Button>
+);
 
 export const PrimaryTransparentButton: ComponentStory<
   typeof Button
@@ -33,6 +61,7 @@ export const PrimaryTransparentButton: ComponentStory<
   <Button
     variant="primary"
     version="transparent"
+    onClick={() => console.log("clicked")}
   >
     primary
   </Button>
@@ -44,6 +73,7 @@ export const SuccessTransparentButton: ComponentStory<
   <Button
     variant="success"
     version="transparent"
+    onClick={() => console.log("clicked")}
   >
     Success
   </Button>
@@ -55,6 +85,7 @@ export const DangerTransparentButton: ComponentStory<
   <Button
     variant="danger"
     version="transparent"
+    onClick={() => console.log("clicked")}
   >
     Danger
   </Button>
@@ -66,6 +97,7 @@ export const WarningTransparentButton: ComponentStory<
   <Button
     variant="warning"
     version="transparent"
+    onClick={() => console.log("clicked")}
   >
     Warning
   </Button>
@@ -77,6 +109,7 @@ export const WithLeftIcon: ComponentStory<
   <Button
     variant="primary"
     version="transparent"
+    onClick={() => console.log("clicked")}
     leftIcon={<Clipboard />}
   >
     with Icon
@@ -89,6 +122,7 @@ export const WithRightIcon: ComponentStory<
   <Button
     variant="primary"
     version="transparent"
+    onClick={() => console.log("clicked")}
     rightIcon={<PhoneCall size={20} />}
   >
     Right Icon
