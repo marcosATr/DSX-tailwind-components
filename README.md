@@ -7,3 +7,5 @@ Installation:
   2. Add pre-built styles to your app: `import "dsx-react-components/style.css"`
   
   Fork and customize the pallete to match your needs.
+
+  [Visit the storybook page](https://dsx-tailwind-components-marcosatr.vercel.app/?path=/docs/card--default-card-with-clamp-prop).
