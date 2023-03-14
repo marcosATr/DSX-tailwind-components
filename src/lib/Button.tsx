@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import { _VARIANTTYPES } from "./vars";
 
 export interface ButtonProps {
@@ -9,6 +9,7 @@ export interface ButtonProps {
   rightIcon?: React.ReactElement;
   children?: string;
   className?: string;
+  onClick: MouseEventHandler<HTMLButtonElement>;
 }
 
 function Button({
@@ -18,6 +19,7 @@ function Button({
   rightIcon,
   children,
   className,
+  onClick,
 }: ButtonProps) {
   const cn = classNames(
     "px-[20px] py-[10px] text-[15px] font-medium rounded shadow-sm flex items-center leading-[1.1rem]",
@@ -42,7 +44,10 @@ function Button({
   );
 
   return (
-    <button className={cn}>
+    <button
+      className={cn}
+      onClick={onClick}
+    >
       {leftIcon}
       <span className={CNtextWrapper}>{children}</span>
       {rightIcon}
