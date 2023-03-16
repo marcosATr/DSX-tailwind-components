@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import { _VARIANTTYPES } from "./vars";
 export interface ButtonProps {
     variant?: _VARIANTTYPES;
@@ -7,6 +7,7 @@ export interface ButtonProps {
     rightIcon?: React.ReactElement;
     children?: string;
     className?: string;
+    onClick: MouseEventHandler<HTMLButtonElement>;
 }
-declare function Button({ variant, version, leftIcon, rightIcon, children, className, }: ButtonProps): JSX.Element;
+declare function Button({ variant, version, leftIcon, rightIcon, children, className, onClick, }: ButtonProps): JSX.Element;
 export default Button;
