@@ -59,6 +59,10 @@
     "vite": "^3.2.3"
   },
   "dependencies": {
+    "@tiptap/extension-heading": "^2.0.0-beta.220",
+    "@tiptap/pm": "^2.0.0-beta.220",
+    "@tiptap/react": "^2.0.0-beta.220",
+    "@tiptap/starter-kit": "^2.0.0-beta.220",
     "classnames": "^2.3.2",
     "lodash": "^4.17.21",
     "phosphor-react": "^1.4.1",

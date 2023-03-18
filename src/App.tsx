@@ -1,15 +1,25 @@
+import { useState } from "react";
 import {
   RouterProvider,
   createBrowserRouter,
 } from "react-router-dom";
+import { TextEditor } from "./components";
 
+const Test = () => {
+  const [text, setText] = useState();
+  return (
+    <div className="h-full w-full p-8">
+      <TextEditor
+        text={text}
+        setText={setText}
+      />
+    </div>
+  );
+};
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <div className="m-8 h-full w-full">
-      </div>
-    ),
+    element: <Test />,
   },
 ]);
 
