@@ -11,8 +11,10 @@ export interface ITextEditorProps {
   text?: string;
   setText: (string) => void;
 }
+//TODO: conditionally expose buttons
+//TODO: add clear format button
 
-const MenuBar = ({ editor }: { editor: Editor }) => {
+const MenuBar = ({ editor }: { editor: Editor | null }) => {
   if (!editor) {
     return null;
   }
@@ -20,9 +22,9 @@ const MenuBar = ({ editor }: { editor: Editor }) => {
     "px-2 py-1 my-1 text-heading bg-opacity-10 hover:bg-gray rounded mr-1 last:mr-0";
 
   const commomActiveClasses =
-    "px-2 py-1 my-1 p-2 text-heading bg-grayLight rounded mr-1 last:mr-0";
+    "px-2 py-1 my-1 p-2 text-heading bg-lightBorder rounded mr-1 last:mr-0";
   return (
-    <div className="bg-primary-light p-1">
+    <div className="bg-grayLight p-1">
       <button
         onClick={() =>
           editor
@@ -120,7 +122,7 @@ const MenuBar = ({ editor }: { editor: Editor }) => {
       >
         strike
       </button>
-      <button
+      {/* <button
         onClick={() =>
           editor.chain().focus().toggleHighlight().run()
         }
@@ -187,7 +189,7 @@ const MenuBar = ({ editor }: { editor: Editor }) => {
         }
       >
         justify
-      </button>
+      </button> */}
     </div>
   );
 };
@@ -204,7 +206,7 @@ export default function TextEditor({
         paragraph: {
           HTMLAttributes: {
             class:
-              "font-normal text-[0.9375rem] leading-[1.375rem] text-defaultText",
+              "font-normal text-[0.9375rem] leading-[1.375rem] text-defaultText mb-4 last:mb-0",
           },
         },
         heading: false,
@@ -217,6 +219,7 @@ export default function TextEditor({
           )
             ? node.attrs.level
             : this.options.levels[0];
+
           const classes = {
             1: "font-semibold text-[2.375rem] leading-[3.25rem] text-heading",
             2: "font-semibold text-[2rem] leading-[2.75rem] text-heading",
@@ -225,6 +228,7 @@ export default function TextEditor({
             5: "font-semibold text-[1.125rem] leading-[1.5rem] text-heading",
             6: "font-semibold text-[0.925rem] leading-[1.25rem] text-heading",
           };
+
           return [
             `h${level}`,
             mergeAttributes(
@@ -239,7 +243,7 @@ export default function TextEditor({
         },
       }),
     ],
-    content: "<p>type!</p>",
+    content: "<p>type something awesome!</p>",
     onUpdate: ({ editor }) => {
       const html = editor.getHTML();
       setText(html);
@@ -252,7 +256,7 @@ export default function TextEditor({
   });
   console.log(text);
   return (
-    <div className="rounded border-[3px] border-primary-light focus:border-primary ">
+    <div className="rounded border-[3px] border-grayLight focus:border-primary ">
       <MenuBar editor={editor} />
       <EditorContent editor={editor} />
     </div>
