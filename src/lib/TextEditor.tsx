@@ -221,12 +221,12 @@ export default function TextEditor({
             : this.options.levels[0];
 
           const classes = {
-            1: "font-semibold text-[2.375rem] leading-[3.25rem] text-heading",
-            2: "font-semibold text-[2rem] leading-[2.75rem] text-heading",
-            3: "font-semibold text-[1.625rem] leading-[2.25rem] text-heading",
-            4: "font-semibold text-[1.375rem] leading-[1.875rem] text-heading",
-            5: "font-semibold text-[1.125rem] leading-[1.5rem] text-heading",
-            6: "font-semibold text-[0.925rem] leading-[1.25rem] text-heading",
+            1: "font-semibold text-[2.375rem] leading-[3.25rem] text-heading mb-4",
+            2: "font-semibold text-[2rem] leading-[2.75rem] text-heading mb-4",
+            3: "font-semibold text-[1.625rem] leading-[2.25rem] text-heading mb-4",
+            4: "font-semibold text-[1.375rem] leading-[1.875rem] text-heading mb-4",
+            5: "font-semibold text-[1.125rem] leading-[1.5rem] text-heading mb-4",
+            6: "font-semibold text-[0.925rem] leading-[1.25rem] text-heading mb-4",
           };
 
           return [
@@ -254,7 +254,7 @@ export default function TextEditor({
       },
     },
   });
-  console.log(text);
+
   return (
     <div className="rounded border-[3px] border-grayLight">
       <MenuBar editor={editor} />

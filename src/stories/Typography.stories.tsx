@@ -11,7 +11,7 @@ export default {
     docs: {
       description: {
         component:
-          "Use the <Accordion /> component to display a single accordion. Optionally use the AccordionWrapper component to style and wrap the accordtion items.\n\nComponent Prop: Pass a component to be displayed when the accordion is open.\n\nState Management and the id prop: for",
+          "Complete typography with classes can be easily overridden",
       },
     },
   },
@@ -156,7 +156,7 @@ export const WithCustomClasses: ComponentStory<
   return (
     <Typography
       variant="h5"
-      className="uppercase font-light text-success"
+      className="font-light uppercase text-success"
     >
       Writing is awesome.
     </Typography>

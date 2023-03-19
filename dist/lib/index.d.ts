@@ -15,4 +15,5 @@ export { default as Modal } from "./Modal";
 export { default as RadioSearchCombo } from "./RadioSearchCombo";
 export { default as Surface } from "./Surface";
 export { default as Tag } from "./Tag";
+export { default as TextEditor } from "./TextEditor";
 export { default as Typography } from "./Typography";

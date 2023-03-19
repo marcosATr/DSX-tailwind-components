@@ -3,7 +3,7 @@ import {
   RouterProvider,
   createBrowserRouter,
 } from "react-router-dom";
-import { TextEditor } from "./components";
+import { TextEditor } from "./lib";
 
 const Test = () => {
   const [text, setText] = useState();
