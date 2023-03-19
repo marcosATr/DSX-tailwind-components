@@ -256,7 +256,7 @@ export default function TextEditor({
   });
   console.log(text);
   return (
-    <div className="rounded border-[3px] border-grayLight focus:border-primary ">
+    <div className="rounded border-[3px] border-grayLight">
       <MenuBar editor={editor} />
       <EditorContent editor={editor} />
     </div>
