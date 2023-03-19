@@ -23,7 +23,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "buid:types": "tsc --declaration --emitDeclarationOnly",
+    "build:types": "tsc --declaration --emitDeclarationOnly",
     "preview": "vite preview",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
