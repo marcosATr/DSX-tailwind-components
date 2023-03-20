@@ -1,17 +1,21 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import {
   RouterProvider,
   createBrowserRouter,
 } from "react-router-dom";
-import { TextEditor } from "./lib";
+import { FileDrop } from "./lib";
 
 const Test = () => {
-  const [text, setText] = useState();
+  const [files, setFiles] = useState<FileList | null>(null);
+
   return (
     <div className="h-full w-full p-8">
-      <TextEditor
-        text={text}
-        setText={setText}
+      <FileDrop
+        files={files}
+        onChange={(event: ChangeEvent<HTMLInputElement>) =>
+          setFiles(event.target.files)
+        }
+        multiple
       />
     </div>
   );
