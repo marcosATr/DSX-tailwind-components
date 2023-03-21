@@ -54,7 +54,7 @@ function FileDrop({
     setIsDragging(true);
   }
 
-  function handleDragLeave() {
+  function handleDragEnd() {
     isDragging && setIsDragging(false);
   }
 
@@ -69,7 +69,7 @@ function FileDrop({
       onDrop={handleDrop}
       onDragOver={handleDragOver}
       onDragEnter={handleDragEnter}
-      onDragLeave={handleDragLeave}
+      onDragEnd={handleDragEnd}
     >
       <input
         type="file"
@@ -89,7 +89,7 @@ function FileDrop({
         />
       </div>
       <Typography
-        className="mt-8 mb-2 text-defaultText"
+        className="mt-8 mb-2 text-defaultText text-center"
         variant="h2"
         as="span"
       >
