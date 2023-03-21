@@ -1,5 +1,11 @@
 import { UploadSimple } from "phosphor-react";
-import { ChangeEvent, useRef } from "react";
+import {
+  ChangeEvent,
+  Dispatch,
+  SetStateAction,
+  useRef,
+  useState,
+} from "react";
 import { twMerge } from "tailwind-merge";
 import { Typography } from "../lib";
 
@@ -7,40 +13,70 @@ interface IFileDropProps {
   className?: string;
   multiple?: boolean;
   files: FileList | null;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  setFiles: Dispatch<SetStateAction<FileList | null>>;
 }
 
 function FileDrop({
   className,
   multiple,
   files,
-  onChange,
+  setFiles,
 }: IFileDropProps) {
   const inputRef = useRef<HTMLInputElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+
   function handleClick() {
     inputRef.current!.click();
   }
+
   const filesNames = () => {
-    const names = [];
-    for (const file of files) {
+    const names: string[] = [];
+    for (const file of files || []) {
       names.push(file.name);
     }
-    // console.log(file);
     return names.join(", ");
   };
+
+  function handleDrop(e: React.DragEvent<HTMLDivElement>) {
+    setFiles(e.dataTransfer.files);
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+  }
+
+  function handleDragOver(
+    e: React.DragEvent<HTMLDivElement>
+  ) {
+    e.preventDefault();
+  }
+
+  function handleDragEnter() {
+    setIsDragging(true);
+  }
+
+  function handleDragLeave() {
+    isDragging && setIsDragging(false);
+  }
 
   return (
     <div
       className={twMerge([
         "flex h-full min-h-[280px] w-full flex-col items-center justify-center rounded border border-gray transition-colors hover:bg-[#FFFCFC]",
+        isDragging && "animate-pulse",
         className,
       ])}
       onClick={handleClick}
+      onDrop={handleDrop}
+      onDragOver={handleDragOver}
+      onDragEnter={handleDragEnter}
+      onDragLeave={handleDragLeave}
     >
       <input
         type="file"
         className="hidden"
-        onChange={onChange}
+        onChange={(event: ChangeEvent<HTMLInputElement>) =>
+          setFiles(event.target.files)
+        }
         accept="image/*"
         multiple={multiple}
         ref={inputRef}
