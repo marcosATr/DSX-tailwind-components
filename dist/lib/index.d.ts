@@ -7,6 +7,7 @@ export { default as Button } from "./Button";
 export { default as Card } from "./Card";
 export { default as Divider } from "./Divider";
 export { default as Dropdown } from "./Dropdown";
+export { default as FileDrop } from "./FileDrop";
 export { default as IconWithBadge } from "./IconWithBadge";
 export { default as InputRadio } from "./InputRadio";
 export { default as InputText } from "./InputText";
