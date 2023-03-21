@@ -12,9 +12,7 @@ const Test = () => {
     <div className="h-full w-full p-8">
       <FileDrop
         files={files}
-        onChange={(event: ChangeEvent<HTMLInputElement>) =>
-          setFiles(event.target.files)
-        }
+        setFiles={setFiles}
         multiple
       />
     </div>
