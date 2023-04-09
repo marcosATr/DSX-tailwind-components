@@ -14,6 +14,7 @@ interface IFileDropProps {
   multiple?: boolean;
   files: FileList | null;
   setFiles: Dispatch<SetStateAction<FileList | null>>;
+  variant?: "default" | "small";
 }
 
 function FileDrop({
@@ -21,9 +22,12 @@ function FileDrop({
   multiple,
   files,
   setFiles,
+  variant,
 }: IFileDropProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [isDragging, setIsDragging] = useState(false);
+
+  const variantProp = variant ?? "default";
 
   function handleClick() {
     inputRef.current!.click();
@@ -61,8 +65,12 @@ function FileDrop({
   return (
     <div
       className={twMerge([
-        "flex h-full min-h-[280px] w-full flex-col items-center justify-center rounded border border-gray transition-colors hover:bg-[#FFFCFC]",
+        "flex flex-col items-center justify-center rounded border border-gray transition-colors hover:bg-[#FFFCFC]",
+        variantProp === "default" &&
+          "h-full min-h-[280px] w-full",
         isDragging && "animate-pulse",
+        variantProp === "small" &&
+          "h-[180px] w-full max-w-[180px]",
         className,
       ])}
       onClick={handleClick}
@@ -89,17 +97,22 @@ function FileDrop({
         />
       </div>
       <Typography
-        className="mt-8 mb-2 text-defaultText text-center"
+        className={twMerge([
+          "mt-8 mb-2 text-center text-defaultText",
+          variantProp === "small" && "text-xs mt-4",
+        ])}
         variant="h2"
         as="span"
       >
         Click or drag to select your files to upload.
       </Typography>
-      <Typography className="max-w-[70%] text-center">
-        {(files || []).length > 0
-          ? filesNames()
-          : "No file selected."}
-      </Typography>
+      {variant !== "small" && (
+        <Typography className="max-w-[70%] text-center">
+          {(files || []).length > 0
+            ? filesNames()
+            : "No file selected."}
+        </Typography>
+      )}
     </div>
   );
 }
