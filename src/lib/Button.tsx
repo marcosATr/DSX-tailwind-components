@@ -1,6 +1,6 @@
-import classNames from "classnames";
 import React, { MouseEventHandler } from "react";
 import { _VARIANTTYPES } from "./vars";
+import { twMerge } from "tailwind-merge";
 
 export interface ButtonProps {
   variant?: _VARIANTTYPES;
@@ -21,7 +21,7 @@ function Button({
   className,
   onClick,
 }: ButtonProps) {
-  const cn = classNames(
+  const cn = twMerge(
     "px-[20px] py-[10px] text-[15px] font-medium rounded shadow-sm flex items-center leading-[1.1rem]",
     version === "solid"
       ? [
@@ -38,7 +38,7 @@ function Button({
     className && className
   );
 
-  const CNtextWrapper = classNames(
+  const CNtextWrapper = twMerge(
     leftIcon && "ml-3",
     rightIcon && "mr-3"
   );

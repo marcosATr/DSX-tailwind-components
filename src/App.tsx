@@ -14,6 +14,7 @@ const Test = () => {
         files={files}
         setFiles={setFiles}
         multiple
+        variant="small"
       />
     </div>
   );
