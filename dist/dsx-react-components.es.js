@@ -1,6 +1,6 @@
 import A from "classnames";
 import se, { useState as I, useRef as Z, useEffect as X, createElement as gr, cloneElement as vr, useMemo as xr } from "react";
-import { debounce as br } from "lodash";
+import br from "lodash";
 import { Minus as yr, Plus as wr, CaretDown as Er, UploadSimple as Nr, X as Cr } from "phosphor-react";
 import { twMerge as C } from "tailwind-merge";
 import { createPortal as Rr } from "react-dom";
@@ -660,7 +660,7 @@ function Sr({
   handleOpenClose: g,
   mode: x
 }) {
-  const [d, f] = I(!!(n != null && n[i])), [b, R] = I(0), T = Z(null), D = br(() => g(), 450), L = () => {
+  const [d, f] = I(!!(n != null && n[i])), [b, R] = I(0), T = Z(null), D = br.debounce(() => g(), 450), L = () => {
     f((E) => !E), n != null && n[i] ? D() : g();
   };
   X(() => {

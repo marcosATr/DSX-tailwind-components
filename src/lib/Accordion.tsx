@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { debounce } from "lodash";
+import _ from "lodash";
 import { Minus, Plus } from "phosphor-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -52,7 +52,7 @@ function Accordion({
   );
   const ref = useRef<HTMLDivElement>(null);
 
-  const delayedUpdate = debounce(
+  const delayedUpdate = _.debounce(
     () => handleOpenClose(),
     450
   );
