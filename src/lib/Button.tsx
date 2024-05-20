@@ -1,58 +1,18 @@
-import React, { MouseEventHandler } from "react";
-import { _VARIANTTYPES } from "./vars";
+import type { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
-export interface ButtonProps {
-  variant?: _VARIANTTYPES;
-  version?: "solid" | "transparent";
-  leftIcon?: React.ReactElement;
-  rightIcon?: React.ReactElement;
-  children?: string;
-  className?: string;
-  onClick: MouseEventHandler<HTMLButtonElement>;
+interface ButtonProps extends ComponentProps<"button"> {}
+
+export default function Button({ className, disabled, ...props }: ButtonProps) {
+	return (
+		<button
+			className={twMerge(
+				"flex h-10 w-fit items-center justify-center gap-[10px] rounded-md bg-primary-500 px-5 py-2 font-medium text-base text-white ring-primary-100 hover:bg-primary-600 focus:ring cursor-pointer",
+				className,
+			)}
+			{...props}
+		/>
+	);
 }
-
-function Button({
-  variant = "primary",
-  version = "solid",
-  leftIcon,
-  rightIcon,
-  children,
-  className,
-  onClick,
-}: ButtonProps) {
-  const cn = twMerge(
-    "px-[20px] py-[10px] text-[15px] font-medium rounded shadow-sm flex items-center leading-[1.1rem]",
-    version === "solid"
-      ? [
-          "hover:brightness-[1.13]",
-          "ease-in duration-100",
-          "text-white",
-          `bg-${variant}`,
-        ]
-      : [
-          "hover:brightness-90",
-          `text-${variant}`,
-          `bg-${variant}-light`,
-        ],
-    className && className
-  );
-
-  const CNtextWrapper = twMerge(
-    leftIcon && "ml-3",
-    rightIcon && "mr-3"
-  );
-
-  return (
-    <button
-      className={cn}
-      onClick={onClick}
-    >
-      {leftIcon}
-      <span className={CNtextWrapper}>{children}</span>
-      {rightIcon}
-    </button>
-  );
-}
-
-export default Button;
+//TODO: Update storybook with new button
+//TODO: Outlined styles missing

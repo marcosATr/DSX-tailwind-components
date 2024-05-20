@@ -10,7 +10,7 @@ export { default as Dropdown } from "./Dropdown";
 export { default as FileDrop } from "./FileDrop";
 export { default as IconWithBadge } from "./IconWithBadge";
 export { default as InputRadio } from "./InputRadio";
-export { default as InputText } from "./InputText";
+export { default as TextField } from "./TextField";
 export { default as ListGroup } from "./ListGroup";
 export { default as Menu } from "./Menu";
 export { default as Modal } from "./Modal";
